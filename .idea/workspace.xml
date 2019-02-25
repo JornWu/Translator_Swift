@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0de96939-e9c5-49b6-8248-64bb617b5c0e" name="Default Changelist" comment="" />
+    <list default="true" id="0de96939-e9c5-49b6-8248-64bb617b5c0e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/Camera.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/Moments.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/Moments.imageset/Moments.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/More.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/More.imageset/More.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/WeChat.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/WeChat.imageset/Wechat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/Weibo.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/Weibo.imageset/Weibo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/controllers/SettingsViewController.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/controllers/ShareViewController.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/icons/Camera.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/icons/Moments.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/icons/More.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/icons/Wechat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/icons/Weibo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FanYi/views/Share.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FanYi.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/FanYi.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FanYi.xcworkspace/xcuserdata/Jorn.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/FanYi.xcworkspace/xcuserdata/Jorn.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FanYi/config/Config.swift" beforeDir="false" afterPath="$PROJECT_DIR$/FanYi/config/Config.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FanYi/controllers/ViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/FanYi/controllers/ViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FanYi/icons/camera.png" beforeDir="false" afterPath="$PROJECT_DIR$/FanYi/Assets.xcassets/icons/Camera.imageset/Camera.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FanYi/views/Menu.swift" beforeDir="false" afterPath="$PROJECT_DIR$/FanYi/views/Menu.swift" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,17 +41,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FanYi/config/Config.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="68" column="31" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
+            <state relative-caret-position="315">
+              <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+              <folding>
+                <element signature="e#1833#3261#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FanYi/controllers/ViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="178" column="5" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
+            <state relative-caret-position="342">
+              <caret line="264" column="5" selection-start-line="264" selection-start-column="5" selection-end-line="264" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FanYi/controllers/ShareViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-593" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FanYi/views/Menu.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -42,6 +88,9 @@
       <replace>separator: String = &quot; &quot;, terminator: String = &quot;\n&quot;</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -52,15 +101,17 @@
         <option value="$PROJECT_DIR$/FanYi/NetworkeEngine.swift" />
         <option value="$PROJECT_DIR$/FanYi/config/Config.swift" />
         <option value="$PROJECT_DIR$/FanYi/controllers/ViewController.swift" />
+        <option value="$PROJECT_DIR$/FanYi/views/Menu.swift" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="37" />
+    <option name="x" value="15" />
     <option name="y" value="23" />
     <option name="width" value="1260" />
-    <option name="height" value="661" />
+    <option name="height" value="701" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -84,6 +135,12 @@
               <item name="FanYi" type="1d218c8b:XcodeProjectNode" />
               <item name="FanYi" type="fcab9f18:XcodeViewNode" />
               <item name="controllers" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="FanYi" type="1d218c8b:XcodeProjectNode" />
+              <item name="FanYi" type="fcab9f18:XcodeViewNode" />
+              <item name="views" type="fcab9f18:XcodeViewNode" />
             </path>
           </expand>
           <select />
@@ -133,12 +190,12 @@
       <updated>1550756090094</updated>
       <workItem from="1550756092193" duration="1008000" />
       <workItem from="1550761173697" duration="7574000" />
-      <workItem from="1550842648486" duration="4867000" />
+      <workItem from="1550842648486" duration="8443000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13449000" />
+    <option name="totallyTimeSpent" value="17025000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -150,7 +207,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="37" y="23" width="1260" height="661" extended-state="0" />
+    <frame x="15" y="23" width="1260" height="701" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25779969" />
@@ -159,16 +216,16 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38898164" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23481117" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32928944" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.36731106" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32928944" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32864675" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.19868638" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -178,6 +235,33 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="SHOW_DETAILS_IN_CHANGES" value="false" />
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/arm64/iphoneos12.1/CoreGraphics.CGGeometry/CoreGraphics.CGGeometry.swift">
@@ -255,15 +339,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FanYi/config/Config.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="68" column="31" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
+        <state relative-caret-position="315">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding>
+            <element signature="e#1833#3261#0" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FanYi/controllers/TargetLanguageViewController.swift">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/FanYi/controllers/ViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="178" column="5" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
+        <state relative-caret-position="342">
+          <caret line="264" column="5" selection-start-line="264" selection-start-column="5" selection-end-line="264" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FanYi/controllers/ShareViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-593" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FanYi/views/Menu.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
         </state>
       </provider>
     </entry>

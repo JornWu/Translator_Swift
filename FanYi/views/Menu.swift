@@ -18,12 +18,12 @@ let kMENU_ITEM_WIDTH = 180
 class Menu: NSObject {
     private var mItems: [String]?
     
-    var mDelegate: MenuDelegate?
-    var mView: UIView!
+    weak var mDelegate: MenuDelegate?
+    var mWindow: UIButton!
     
     var isHidden: Bool = false {
         didSet {
-            mView?.isHidden = isHidden
+            mWindow.isHidden = isHidden
         }
     }
     
@@ -37,7 +37,7 @@ class Menu: NSObject {
         let menu = Menu()
         menu.mItems = items
         
-        menu.mView = { () -> UITableView in
+        let menuView = { () -> UITableView in
             let view = UITableView(frame: CGRect(x: pos.x,
                                                  y: pos.y,
                                                  width: CGFloat(kMENU_ITEM_WIDTH),
@@ -49,19 +49,34 @@ class Menu: NSObject {
             
             view.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
             view.layer.cornerRadius = 10
-            view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.2518981074)
+            view.backgroundColor = kTHEME_CONTROL_COLOR
             
             view.delegate = menu
             view.dataSource = menu
+
+            view.register(UITableViewCell.self, forCellReuseIdentifier: "MenuCell")
             
             return view
         }()
         
+        menu.mWindow = { () -> UIButton in
+           let window = UIButton(frame: CGRect(x: 0,
+                                               y: 0,
+                                               width: kMAIN_SCREEN_WIDTH,
+                                               height: kMAIN_SCREEN_HEIGHT))
+            window.addTarget(menu, action: #selector(onClickWindow), for: .touchUpInside)
+            window.addSubview(menuView)
+            return window
+        }()
+        
         return menu
+    }
+
+    @objc private func onClickWindow() {
+        self.isHidden = !self.isHidden
     }
     
     private override init() {
-        super.init()
     }
 }
 
@@ -71,6 +86,8 @@ extension Menu: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.isHidden = !self.isHidden
+        
         guard let delegate = self.mDelegate else {
             JWLog.i("Menu hava no delegate.")
             return
@@ -86,14 +103,11 @@ extension Menu: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "MenuCell")
-            cell?.selectionStyle = .none
-            cell?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.2493948063)
-        }
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell")
+        cell!.selectionStyle = .none
+        cell!.backgroundColor = kTHEME_CONTROL_COLOR
         cell!.textLabel?.text = self.mItems?[indexPath.row]
+
         return cell!
     }
 }

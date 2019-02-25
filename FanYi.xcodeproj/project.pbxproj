@@ -7,25 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A47D9D722219DC100FE58C0 /* AppIcon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A47D9CE22219DC100FE58C0 /* AppIcon80x80.png */; };
-		0A47D9D822219DC100FE58C0 /* AppIcon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A47D9CF22219DC100FE58C0 /* AppIcon58x58.png */; };
-		0A47D9D922219DC100FE58C0 /* AppIcon60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A47D9D022219DC100FE58C0 /* AppIcon60x60.png */; };
-		0A47D9DA22219DC100FE58C0 /* AppIcon180x180.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A47D9D122219DC100FE58C0 /* AppIcon180x180.png */; };
-		0A47D9DB22219DC100FE58C0 /* AppIcon1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A47D9D222219DC100FE58C0 /* AppIcon1024x1024.png */; };
-		0A47D9DC22219DC100FE58C0 /* AppIcon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A47D9D322219DC100FE58C0 /* AppIcon120x120.png */; };
-		0A47D9DD22219DC100FE58C0 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A47D9D422219DC100FE58C0 /* camera.png */; };
-		0A47D9DE22219DC100FE58C0 /* AppIcon87x87.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A47D9D522219DC100FE58C0 /* AppIcon87x87.png */; };
-		0A47D9DF22219DC100FE58C0 /* AppIcon40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A47D9D622219DC100FE58C0 /* AppIcon40x40.png */; };
 		0A47D9E122219E3700FE58C0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E022219E3700FE58C0 /* ProfileViewController.swift */; };
 		0A47D9E322219F9100FE58C0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E222219F9100FE58C0 /* BaseViewController.swift */; };
 		0A47D9E62221A04A00FE58C0 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E52221A04A00FE58C0 /* Menu.swift */; };
 		0A47D9E82221D74500FE58C0 /* TargetLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E72221D74500FE58C0 /* TargetLanguageViewController.swift */; };
+		0A47D9EA2222DFD100FE58C0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E92222DFD100FE58C0 /* SettingsViewController.swift */; };
+		0A47D9FC2223033200FE58C0 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9FB2223033200FE58C0 /* ShareViewController.swift */; };
 		0A54718222203115000567B9 /* NetworkeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54718122203115000567B9 /* NetworkeEngine.swift */; };
 		0A54718B22219176000567B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A54718722219175000567B9 /* Main.storyboard */; };
 		0A54718C22219176000567B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A54718922219175000567B9 /* LaunchScreen.storyboard */; };
 		0A54718F22219184000567B9 /* FanYi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A54718D22219184000567B9 /* FanYi.xcdatamodeld */; };
 		0A5471912221918D000567B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5471902221918D000567B9 /* AppDelegate.swift */; };
 		0A5471932221919D000567B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A5471922221919D000567B9 /* Assets.xcassets */; };
+		0A5E918D222421E2002FAE4A /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E918C222421E2002FAE4A /* Share.swift */; };
 		23526792158839503C7E630C /* FanYiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352689964D7815D1ECECC06 /* FanYiTests.swift */; };
 		235269D514C834C534AB5CCC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23526FE282C72B52B46435A9 /* Config.swift */; };
 		23526A4F16608E4AC2BFE0C9 /* FanYiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23526B27A0CCDBA1781CAFC1 /* FanYiUITests.swift */; };
@@ -51,19 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A47D9CE22219DC100FE58C0 /* AppIcon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon80x80.png; sourceTree = "<group>"; };
-		0A47D9CF22219DC100FE58C0 /* AppIcon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon58x58.png; sourceTree = "<group>"; };
-		0A47D9D022219DC100FE58C0 /* AppIcon60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon60x60.png; sourceTree = "<group>"; };
-		0A47D9D122219DC100FE58C0 /* AppIcon180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon180x180.png; sourceTree = "<group>"; };
-		0A47D9D222219DC100FE58C0 /* AppIcon1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon1024x1024.png; sourceTree = "<group>"; };
-		0A47D9D322219DC100FE58C0 /* AppIcon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon120x120.png; sourceTree = "<group>"; };
-		0A47D9D422219DC100FE58C0 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
-		0A47D9D522219DC100FE58C0 /* AppIcon87x87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon87x87.png; sourceTree = "<group>"; };
-		0A47D9D622219DC100FE58C0 /* AppIcon40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon40x40.png; sourceTree = "<group>"; };
 		0A47D9E022219E3700FE58C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0A47D9E222219F9100FE58C0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0A47D9E52221A04A00FE58C0 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		0A47D9E72221D74500FE58C0 /* TargetLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetLanguageViewController.swift; sourceTree = "<group>"; };
+		0A47D9E92222DFD100FE58C0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0A47D9FB2223033200FE58C0 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		0A54718122203115000567B9 /* NetworkeEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkeEngine.swift; sourceTree = "<group>"; };
 		0A547183222034FF000567B9 /* FanYi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FanYi-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A54718822219175000567B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +58,7 @@
 		0A54718E22219184000567B9 /* FanYi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FanYi.xcdatamodel; sourceTree = "<group>"; };
 		0A5471902221918D000567B9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A5471922221919D000567B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A5E918C222421E2002FAE4A /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		0B2DB579BCFA43C15EB6D5DB /* Pods-FanYi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanYi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FanYi/Pods-FanYi.debug.xcconfig"; sourceTree = "<group>"; };
 		23526167B9EF6A6354C14757 /* FanYi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanYi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		235264A53DCBA9B7A8AC0DBD /* FanYiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FanYiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,26 +100,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A47D9CD22219DC100FE58C0 /* icons */ = {
-			isa = PBXGroup;
-			children = (
-				0A47D9CE22219DC100FE58C0 /* AppIcon80x80.png */,
-				0A47D9CF22219DC100FE58C0 /* AppIcon58x58.png */,
-				0A47D9D022219DC100FE58C0 /* AppIcon60x60.png */,
-				0A47D9D122219DC100FE58C0 /* AppIcon180x180.png */,
-				0A47D9D222219DC100FE58C0 /* AppIcon1024x1024.png */,
-				0A47D9D322219DC100FE58C0 /* AppIcon120x120.png */,
-				0A47D9D422219DC100FE58C0 /* camera.png */,
-				0A47D9D522219DC100FE58C0 /* AppIcon87x87.png */,
-				0A47D9D622219DC100FE58C0 /* AppIcon40x40.png */,
-			);
-			path = icons;
-			sourceTree = "<group>";
-		};
 		0A47D9E42221A00200FE58C0 /* views */ = {
 			isa = PBXGroup;
 			children = (
 				0A47D9E52221A04A00FE58C0 /* Menu.swift */,
+				0A5E918C222421E2002FAE4A /* Share.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -142,6 +115,8 @@
 				2352659866C923D7C560ADA5 /* ViewController.swift */,
 				0A47D9E022219E3700FE58C0 /* ProfileViewController.swift */,
 				0A47D9E72221D74500FE58C0 /* TargetLanguageViewController.swift */,
+				0A47D9E92222DFD100FE58C0 /* SettingsViewController.swift */,
+				0A47D9FB2223033200FE58C0 /* ShareViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -170,7 +145,6 @@
 		2352664B712FCF42110E374B /* FanYi */ = {
 			isa = PBXGroup;
 			children = (
-				0A47D9CD22219DC100FE58C0 /* icons */,
 				0A5471922221919D000567B9 /* Assets.xcassets */,
 				23526E0CA2BB1E7DFC53B4BB /* Info.plist */,
 				0A54718922219175000567B9 /* LaunchScreen.storyboard */,
@@ -329,17 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A54718B22219176000567B9 /* Main.storyboard in Resources */,
-				0A47D9DF22219DC100FE58C0 /* AppIcon40x40.png in Resources */,
-				0A47D9DE22219DC100FE58C0 /* AppIcon87x87.png in Resources */,
-				0A47D9D922219DC100FE58C0 /* AppIcon60x60.png in Resources */,
-				0A47D9DC22219DC100FE58C0 /* AppIcon120x120.png in Resources */,
-				0A47D9D722219DC100FE58C0 /* AppIcon80x80.png in Resources */,
-				0A47D9DD22219DC100FE58C0 /* camera.png in Resources */,
 				0A5471932221919D000567B9 /* Assets.xcassets in Resources */,
-				0A47D9DA22219DC100FE58C0 /* AppIcon180x180.png in Resources */,
-				0A47D9D822219DC100FE58C0 /* AppIcon58x58.png in Resources */,
 				0A54718C22219176000567B9 /* LaunchScreen.storyboard in Resources */,
-				0A47D9DB22219DC100FE58C0 /* AppIcon1024x1024.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,8 +369,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A47D9E122219E3700FE58C0 /* ProfileViewController.swift in Sources */,
+				0A5E918D222421E2002FAE4A /* Share.swift in Sources */,
+				0A47D9FC2223033200FE58C0 /* ShareViewController.swift in Sources */,
 				0A54718222203115000567B9 /* NetworkeEngine.swift in Sources */,
 				0A47D9E62221A04A00FE58C0 /* Menu.swift in Sources */,
+				0A47D9EA2222DFD100FE58C0 /* SettingsViewController.swift in Sources */,
 				0A54718F22219184000567B9 /* FanYi.xcdatamodeld in Sources */,
 				23526CE16E6DC3DD59E60F1A /* ViewController.swift in Sources */,
 				0A5471912221918D000567B9 /* AppDelegate.swift in Sources */,
