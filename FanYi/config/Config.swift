@@ -66,39 +66,39 @@ let kPUBLIC_REQUEST_PARAM_TOKEN = "X-TC-Token"
 struct JWLog {
 
     private enum LogLeve: Int {
+        case DISABLE
         case ERROR
         case WARN
         case INFO
         case DEBUG
-        case DISABLE
     }
 
-    private static let kLOG_LEVEL = LogLeve.DEBUG
+    private static let LOG_LEVEL = LogLeve.DEBUG
     
     public static func d(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-        if kLOG_LEVEL.rawValue >= LogLeve.DEBUG.rawValue {
+        if LOG_LEVEL.rawValue >= LogLeve.DEBUG.rawValue {
             print("DEBUG: ", terminator: "")
             print(items, separator: separator, terminator: terminator)
         }
     }
     
     public static func i(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-        if kLOG_LEVEL.rawValue >= LogLeve.INFO.rawValue {
-            print("INFOMATION: ", terminator: "")
+        if LOG_LEVEL.rawValue >= LogLeve.INFO.rawValue {
+            print("INFORMATION: ", terminator: "")
             print(items, separator: separator, terminator: terminator)
             
         }
     }
     
     public static func w(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-        if kLOG_LEVEL.rawValue >= LogLeve.WARN.rawValue {
+        if LOG_LEVEL.rawValue >= LogLeve.WARN.rawValue {
             print("WARNINF: ", terminator: "")
             print(items, separator: separator, terminator: terminator)
         }
     }
     
     public static func e(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-        if kLOG_LEVEL.rawValue >= LogLeve.ERROR.rawValue {
+        if LOG_LEVEL.rawValue >= LogLeve.ERROR.rawValue {
             print("ERROR: ", terminator: "")
             print(items, separator: separator, terminator: terminator)
         }

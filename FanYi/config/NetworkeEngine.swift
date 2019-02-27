@@ -50,7 +50,7 @@ struct NetworkeEngine {
         }
 
         guard let task = dataTask else {
-            print("data task is null.")
+            JWLog.e("data task is null.")
             return;
         }
         
@@ -82,7 +82,7 @@ struct NetworkeEngine {
                     progress: nil,
                     success: {
                         (task: URLSessionDataTask, responseObject: Any?) in
-                        print("----获取数据成功----", responseObject ?? "--null--")
+                        JWLog.i("----获取数据成功----", responseObject ?? "--null--")
                         ///返回主线程刷新UI
                         DispatchQueue.main.async(execute: {
                             result(responseObject as! NSDictionary)
@@ -91,7 +91,7 @@ struct NetworkeEngine {
                     },
                     failure: {
                         (task: URLSessionDataTask?, responseObject: Error) in
-                        print("----获取数据失败----", responseObject.localizedDescription)
+                        JWLog.i("----获取数据失败----", responseObject.localizedDescription)
                     })
         }
     }
