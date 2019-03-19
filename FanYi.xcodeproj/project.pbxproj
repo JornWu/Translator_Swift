@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A14DA5822410EF90036658D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14DA5722410EF90036658D /* Utils.swift */; };
 		0A47D9E122219E3700FE58C0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E022219E3700FE58C0 /* ProfileViewController.swift */; };
 		0A47D9E322219F9100FE58C0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E222219F9100FE58C0 /* BaseViewController.swift */; };
 		0A47D9E62221A04A00FE58C0 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E52221A04A00FE58C0 /* Menu.swift */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A14DA4E223A6F4B0036658D /* FanYi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FanYi.entitlements; sourceTree = "<group>"; };
+		0A14DA5722410EF90036658D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0A47D9E022219E3700FE58C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0A47D9E222219F9100FE58C0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0A47D9E52221A04A00FE58C0 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				23526FE282C72B52B46435A9 /* Config.swift */,
+				0A14DA5722410EF90036658D /* Utils.swift */,
 				0A47D9E222219F9100FE58C0 /* BaseViewController.swift */,
 				0A54718122203115000567B9 /* NetworkeEngine.swift */,
 				0A547183222034FF000567B9 /* FanYi-Bridging-Header.h */,
@@ -145,6 +149,7 @@
 		2352664B712FCF42110E374B /* FanYi */ = {
 			isa = PBXGroup;
 			children = (
+				0A14DA4E223A6F4B0036658D /* FanYi.entitlements */,
 				0A5471922221919D000567B9 /* Assets.xcassets */,
 				23526E0CA2BB1E7DFC53B4BB /* Info.plist */,
 				0A54718922219175000567B9 /* LaunchScreen.storyboard */,
@@ -274,6 +279,14 @@
 					2352627666703027DB4D3EE1 = {
 						DevelopmentTeam = YMW6V49R36;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					235265633E403931404FAEF4 = {
+						DevelopmentTeam = YMW6V49R36;
 					};
 				};
 			};
@@ -373,6 +386,7 @@
 				0A47D9FC2223033200FE58C0 /* ShareViewController.swift in Sources */,
 				0A54718222203115000567B9 /* NetworkeEngine.swift in Sources */,
 				0A47D9E62221A04A00FE58C0 /* Menu.swift in Sources */,
+				0A14DA5822410EF90036658D /* Utils.swift in Sources */,
 				0A47D9EA2222DFD100FE58C0 /* SettingsViewController.swift in Sources */,
 				0A54718F22219184000567B9 /* FanYi.xcdatamodeld in Sources */,
 				23526CE16E6DC3DD59E60F1A /* ViewController.swift in Sources */,
@@ -438,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FanYi.app/FanYi";
+				DEVELOPMENT_TEAM = YMW6V49R36;
 				INFOPLIST_FILE = FanYiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jornwu.FanYiTests;
@@ -511,6 +526,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YMW6V49R36;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+				);
 				INFOPLIST_FILE = FanYi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jornwu.FanYi;
@@ -525,6 +546,7 @@
 		235267F4C4D5847453AB542F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FanYiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jornwu.FanYiUITests;
@@ -539,6 +561,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FanYi.app/FanYi";
+				DEVELOPMENT_TEAM = YMW6V49R36;
 				INFOPLIST_FILE = FanYiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jornwu.FanYiTests;
@@ -619,6 +642,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YMW6V49R36;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+				);
 				INFOPLIST_FILE = FanYi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jornwu.FanYi;
@@ -633,6 +662,7 @@
 		23526DA2EF76A9E7765B6D6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FanYiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jornwu.FanYiUITests;
