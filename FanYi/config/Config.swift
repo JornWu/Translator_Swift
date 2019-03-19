@@ -9,8 +9,9 @@ import UIKit
  * public const value
  ********************************************/
 let kTHEME_BOCKGROUND_COLOR = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5034386004)
-let kTHEME_CONTROL_COLOR = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.8049900968)
+let kTHEME_CONTROL_COLOR = #colorLiteral(red: 0.9548080764, green: 0.9548080764, blue: 0.9548080764, alpha: 0.88)
 let kTHEME_BUBBLE_COLOR = #colorLiteral(red: 0.8261432323, green: 0.2285042842, blue: 1, alpha: 1)
+let kTHEME_TEXT_COLOT = UIColor.blue
 let kMAIN_SCREEN_WIDTH = UIScreen.main.bounds.size.width
 let kMAIN_SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 

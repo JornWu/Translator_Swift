@@ -16,9 +16,14 @@ class ViewController: BaseViewController {
     private let kTAG_FD_RIGHT = 0x22
     private let kTAG_BOTTOM_LEFT = 0x31
     private let kTAG_BOTTOM_RIGHT = 0x32
+    
+    private let kHISTORY_REUSE_ID = "HistoryTableCell"
+    private let kBUBBLE_REUSE_ID = "BubbleTableCell"
 
     private var mTopLeftBtn: UIButton!
     private var mTopRghtBtn: UIButton!
+    
+    private var mLeftItem: UIBarButtonItem!
 
     private var mInputTextFd: UITextField!
     private var mInputTextFdLeftBtn: UIButton!
@@ -27,7 +32,8 @@ class ViewController: BaseViewController {
     private var mCHBtn: UIButton!
     private var mEGBtn: UIButton!
 
-    private var mHistoryTableView: UITableView!
+    private var mHistoriesTableView: UITableView!
+    private var mBubblesTableView: UITableView!
 
     private let mMenuItems = ["Interpretation", "Invite", "Settings"]
     private var mMenu: Menu!
@@ -52,8 +58,9 @@ class ViewController: BaseViewController {
             let btn = UIButton(frame: .zero)
             btn.tag = kTAG_TOP_LEFT
             btn.setTitle("Profile", for: .normal)
-            let item = UIBarButtonItem(customView: btn)
-            self.navigationItem.leftBarButtonItem = item
+            btn.setTitleColor(kTHEME_TEXT_COLOT, for: .normal)
+            mLeftItem = UIBarButtonItem(customView: btn)
+            self.navigationItem.leftBarButtonItem = mLeftItem
             return btn
         }()
 
@@ -61,6 +68,7 @@ class ViewController: BaseViewController {
             let btn = UIButton(frame: .zero)
             btn.tag = kTAG_TOP_RIGHT
             btn.setTitle("Menu", for: .normal)
+            btn.setTitleColor(kTHEME_TEXT_COLOT, for: .normal)
             let item = UIBarButtonItem(customView: btn)
             self.navigationItem.rightBarButtonItem = item
             return btn
@@ -81,6 +89,7 @@ class ViewController: BaseViewController {
             btn.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
             btn.tag = kTAG_FD_LEFT
             btn.setTitle("CL", for: .normal)
+            btn.setTitleColor(kTHEME_TEXT_COLOT, for: .normal)
             btn.titleLabel?.font = .systemFont(ofSize: 12)
             btn.backgroundColor = kTHEME_CONTROL_COLOR
             btn.layer.cornerRadius = 5
@@ -108,22 +117,45 @@ class ViewController: BaseViewController {
     }
 
     private func setupTableView() {
-        mHistoryTableView = {
+        mBubblesTableView = {
             let view = UITableView(frame: CGRect(x: 0,
-                    y: 64,
-                    width: kMAIN_SCREEN_WIDTH,
-                    height: kMAIN_SCREEN_HEIGHT - 64),
-                    style: .plain)
+                                                 y: 64,
+                                                 width: kMAIN_SCREEN_WIDTH,
+                                                 height: kMAIN_SCREEN_HEIGHT - 64),
+                                   style: .plain)
             view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            view.isHidden = true
-
+            view.register(UITableViewCell.self, forCellReuseIdentifier: kBUBBLE_REUSE_ID)
+            
+            view.separatorStyle = .none
+            view.showsVerticalScrollIndicator = false
+            view.showsHorizontalScrollIndicator = false
+            
             view.delegate = self
             view.dataSource = self
-
+            
+            self.view.addSubview(view)
+            
             return view
         }()
-
-        self.view.addSubview(mHistoryTableView)
+        
+        mHistoriesTableView = {
+            let view = UITableView(frame: CGRect(x: 0,
+                                                 y: 64,
+                                                 width: kMAIN_SCREEN_WIDTH,
+                                                 height: kMAIN_SCREEN_HEIGHT - 64),
+                                   style: .plain)
+            view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            view.register(UITableViewCell.self, forCellReuseIdentifier: kHISTORY_REUSE_ID)
+            
+            view.isHidden = true
+            
+            view.delegate = self
+            view.dataSource = self
+            
+            self.view.addSubview(view)
+            
+            return view
+        }()
     }
 
     private func setupBottomItems() {
@@ -139,10 +171,11 @@ class ViewController: BaseViewController {
         let width = (kMAIN_SCREEN_WIDTH - 50 - 2) / 2
 
         mCHBtn = { () -> UIButton in
-            let btn = UIButton(type: .system)
+            let btn = UIButton(type: .custom)
             btn.frame = CGRect(x: 25, y: 10, width: width, height: 40)
             btn.tag = kTAG_BOTTOM_LEFT
             btn.setTitle("按住说中文", for: .normal)
+            btn.setTitleColor(kTHEME_TEXT_COLOT, for: .normal)
             btn.backgroundColor = kTHEME_CONTROL_COLOR
 
             containerView.addSubview(btn)
@@ -151,10 +184,11 @@ class ViewController: BaseViewController {
         }()
 
         mEGBtn = { () -> UIButton in
-            let btn = UIButton(type: .system)
+            let btn = UIButton(type: .custom)
             btn.frame = CGRect(x: kMAIN_SCREEN_WIDTH - 25 - width, y: 10, width: width, height: 40)
             btn.tag = kTAG_BOTTOM_RIGHT
             btn.setTitle("English", for: .normal)
+            btn.setTitleColor(kTHEME_TEXT_COLOT, for: .normal)
             btn.backgroundColor = kTHEME_CONTROL_COLOR
 
             containerView.addSubview(btn)
@@ -165,9 +199,11 @@ class ViewController: BaseViewController {
 
     private func setupMenuView() {
         mMenu = {
+            let h = self.navigationController?.navigationBar.frame.size.height
+            let y = self.navigationController?.navigationBar.frame.origin.y
             let menu = Menu.creat(withItems: mMenuItems,
                                   atPosition: CGPoint(x: kMAIN_SCREEN_WIDTH - CGFloat(5 + kMENU_ITEM_WIDTH),
-                                                      y: 64 + 5))
+                                                      y: y! + h! + 5))
             guard menu != nil else {
                 JWLog.e("MenuView creat fail.")
                 return nil
@@ -219,6 +255,8 @@ extension ViewController {
     }
 
     private func intoProfileView() {
+        mInputTextFd.resignFirstResponder()
+        
         let profileVC = ProfileViewController()
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
@@ -229,39 +267,74 @@ extension ViewController {
     }
 
     private func showMenuView() {
-        guard self.mMenu != nil else {
-            JWLog.i("The menu have not been created.")
-            return
+        mInputTextFd.resignFirstResponder()
+        let title = mTopRghtBtn.titleLabel?.text ?? ""
+        if title.compare("Menu") == ComparisonResult.orderedSame {
+            guard self.mMenu != nil else {
+                JWLog.i("The menu have not been created.")
+                return
+            }
+            
+            self.mMenu.isHidden = false
+        } else {
+            navigationItem.leftBarButtonItem = mLeftItem
+            mTopRghtBtn.setTitle("Menu", for: .normal)
+            self.mInputTextFd.frame.size.width = kMAIN_SCREEN_WIDTH - (100 - 20)
+            
+            mInputTextFd.leftView = mInputTextFdLeftBtn
+            mInputTextFd.rightView = mInputTextFdRightBtn
+            
+            mHistoriesTableView.isHidden = true
         }
-
-        self.mMenu.isHidden = false
     }
 }
 
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        ///
+        mHistoriesTableView.isHidden = false
+        
+        ///temp 
+        navigationItem.leftBarButtonItem = nil
+        mTopRghtBtn.setTitle("取消", for: .normal)
+        mInputTextFd.frame.size.width = 300
+        
+        mInputTextFd.leftView = nil
+        mInputTextFd.rightView = nil
+        
         return true
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        ///
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ///
+        mInputTextFd.resignFirstResponder()
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        mInputTextFd.resignFirstResponder()
     }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell(style: .default, reuseIdentifier: "HistoryTableCell")
+        if tableView == mBubblesTableView {
+            return tableView.dequeueReusableCell(withIdentifier: kBUBBLE_REUSE_ID)!
+        }
+        
+        return tableView.dequeueReusableCell(withIdentifier: kHISTORY_REUSE_ID)!
     }
 }
 
@@ -294,6 +367,10 @@ extension ViewController: MenuDelegate {
 
 extension ViewController: ShareDelegate {
     func share(_ share: Share, didSelectRowAt index: Int) {
-        ///
+        ///share with platform SDK
+        
+        if index == 3 {
+            Utils.showShareActivity(inViewcontroller: self, content: "Jorn Wu", image: #imageLiteral(resourceName: "Weibo"), url: "http://www.baidu.com")
+        }
     }
 }

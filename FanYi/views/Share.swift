@@ -89,6 +89,7 @@ class Share: NSObject {
             containerView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.95)
             view.addSubview(containerView)
             
+            var i = 0;
             for item in self.mItems {
                 let itemView = UIButton(type: .custom)
                 itemView.frame = CGRect(x: Int(header) + (self.mSpase20 + self.mItemWidth) * index,
@@ -96,6 +97,9 @@ class Share: NSObject {
                                         width: self.mItemWidth,
                                         height: self.mItemHeight)
                 itemView.showsTouchWhenHighlighted = false
+                itemView.tag = i
+                i += 1
+                
                 
                 itemView.setImage(UIImage(named: item), for: .normal)
                 
