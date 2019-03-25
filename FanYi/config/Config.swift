@@ -42,24 +42,34 @@ let kTARGET_LANGUAGE_LIST = ["English", "Japanese", "Korean",
  * 美国西部(硅谷)	na-siliconvalley
  * 北美地区(多伦多)	na-toronto
  ********************************************/
-let kMAIN_DOMAIN_NAME = "https://tmt.tencentcloudapi.com"
+let kMAIN_URL = "https://tmt.tencentcloudapi.com"
 let kMAIN_REGION = "ap-guangzhou"
 
 let kPROJECT_ID = "1139572"
 let kPROJECT_SECRET_ID = "AKIDMDpNZojX8HsYAhtVq0zmSzPeigT6ot68"
 let kPROJECT_SECRET_KEY = "GXhgU9qRsAPc2KQPEsOn1WwCHDzbFl6I"
 
-let kMAIN_ACTION_IMAGE_TRANSLATE = "ImageTranslate"
-let kMAIN_ACTION_LANGUAGE_DETECT = "LanguageDetect"
-let kMAIN_ACTION_SPEECH_TRANSLATE = "SpeechTranslate"
-let kMAIN_ACTION_TEXT_TRANSLATE = "TextTranslate"
-
 let kPUBLIC_REQUEST_PARAM_ACTION = "X-TC-Action"
 let kPUBLIC_REQUEST_PARAM_REGION = "X-TC-Region"
 let kPUBLIC_REQUEST_PARAM_TIMESTAMP = "X-TC-Timestamp"
 let kPUBLIC_REQUEST_PARAM_VERSION = "X-TC-Version"
-let kPUBLIC_REQUEST_PARAM_AUTHORIZATION = "Authorization"
+let kPUBLIC_REQUEST_PARAM_AUTHORIZATION = "X-TC-Authorization"
 let kPUBLIC_REQUEST_PARAM_TOKEN = "X-TC-Token"
+
+let kPUBLIC_VALUE_X_WWW_FORM_URLENCODED = "application/x-www-form-urlencoded"
+let kPUBLIC_VALUE_JSON = "application/json"
+let kPUBLIC_VALUE_FORM_DATA = "multipart/form-data"
+let kPUBLIC_VALUE_HOST = "tmt.tencentcloudapi.com"
+let kPUBLIC_VALUE_SERVICE = "tmt"
+let kPUBLIC_VALUE_VERSION = "2018-03-21"
+let kPUBLIC_VALUE_REGION = "ap-guangzhou"
+
+enum ActionType: String {
+    case ImageTranslate = "ImageTranslate"
+    case LanguageDetect = "LanguageDetect"
+    case SpeechTranslate = "SpeechTranslate"
+    case TextTranslate = "TextTranslate"
+}
 
 /********************************************
  * print
@@ -110,5 +120,8 @@ struct JWLog {
     }
 }
 
-
+/********************************************
+ * storage
+ ********************************************/
+let kKEY_STORAGE_TARGET_LAN = "key_storage_target_language"
 

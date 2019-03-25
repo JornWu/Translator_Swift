@@ -127,6 +127,7 @@ class ViewController: BaseViewController {
             view.register(UITableViewCell.self, forCellReuseIdentifier: kBUBBLE_REUSE_ID)
             
             view.separatorStyle = .none
+            
             view.showsVerticalScrollIndicator = false
             view.showsHorizontalScrollIndicator = false
             
@@ -306,6 +307,8 @@ extension ViewController: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
+        
+        TranslateViewModel().translate(keyWord: textField.text ?? "")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -317,6 +320,14 @@ extension ViewController: UITextFieldDelegate {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mInputTextFd.resignFirstResponder()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == mBubblesTableView {
+            return 100
+        }
+        
+        return 50
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -331,7 +342,9 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == mBubblesTableView {
-            return tableView.dequeueReusableCell(withIdentifier: kBUBBLE_REUSE_ID)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: kBUBBLE_REUSE_ID)!
+            cell.selectionStyle = .none
+            return cell
         }
         
         return tableView.dequeueReusableCell(withIdentifier: kHISTORY_REUSE_ID)!
@@ -354,8 +367,6 @@ extension ViewController: MenuDelegate {
     }
     
     private func showShareView() {
-//        let alertVC = ShareViewController()
-//        self.present(alertVC, animated: false, completion: nil)
         self.mShare.isHidden = false
     }
     

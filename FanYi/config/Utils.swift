@@ -8,12 +8,9 @@
 
 import UIKit
 
-final class Utils {
-    private init() {
-        
-    }
+struct Utils {
     
-    public class func showShareActivity(inViewcontroller: BaseViewController,
+    public static func showShareActivity(inViewcontroller: BaseViewController,
                                  content: String, image: UIImage, url: String) {
         let finalUrl = URL(string: url)
         let activityItems = [content, image, finalUrl as Any];
@@ -29,5 +26,10 @@ final class Utils {
             }
         
         inViewcontroller.present(avc, animated: true, completion: nil)
+    }
+    
+    ///
+    private init() {
+
     }
 }

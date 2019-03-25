@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0A14DA5822410EF90036658D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14DA5722410EF90036658D /* Utils.swift */; };
+		0A14DA5A2241318F0036658D /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14DA592241318F0036658D /* StorageManager.swift */; };
+		0A14DA6122425B790036658D /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14DA6022425B790036658D /* BubbleView.swift */; };
+		0A14DA6322425BA70036658D /* BubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14DA6222425BA70036658D /* BubbleTableViewCell.swift */; };
+		0A14DA6622427E9F0036658D /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14DA6522427E9F0036658D /* TranslateViewModel.swift */; };
+		0A14DA68224280860036658D /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14DA67224280860036658D /* TranslationModel.swift */; };
 		0A47D9E122219E3700FE58C0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E022219E3700FE58C0 /* ProfileViewController.swift */; };
 		0A47D9E322219F9100FE58C0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E222219F9100FE58C0 /* BaseViewController.swift */; };
 		0A47D9E62221A04A00FE58C0 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47D9E52221A04A00FE58C0 /* Menu.swift */; };
@@ -48,6 +53,11 @@
 /* Begin PBXFileReference section */
 		0A14DA4E223A6F4B0036658D /* FanYi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FanYi.entitlements; sourceTree = "<group>"; };
 		0A14DA5722410EF90036658D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		0A14DA592241318F0036658D /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		0A14DA6022425B790036658D /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
+		0A14DA6222425BA70036658D /* BubbleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTableViewCell.swift; sourceTree = "<group>"; };
+		0A14DA6522427E9F0036658D /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
+		0A14DA67224280860036658D /* TranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
 		0A47D9E022219E3700FE58C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0A47D9E222219F9100FE58C0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0A47D9E52221A04A00FE58C0 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -103,11 +113,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A14DA5B22425A9B0036658D /* modles */ = {
+			isa = PBXGroup;
+			children = (
+				0A14DA67224280860036658D /* TranslationModel.swift */,
+			);
+			path = modles;
+			sourceTree = "<group>";
+		};
+		0A14DA6422427E260036658D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0A14DA6522427E9F0036658D /* TranslateViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		0A47D9E42221A00200FE58C0 /* views */ = {
 			isa = PBXGroup;
 			children = (
 				0A47D9E52221A04A00FE58C0 /* Menu.swift */,
 				0A5E918C222421E2002FAE4A /* Share.swift */,
+				0A14DA6022425B790036658D /* BubbleView.swift */,
+				0A14DA6222425BA70036658D /* BubbleTableViewCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -131,6 +159,7 @@
 				0A14DA5722410EF90036658D /* Utils.swift */,
 				0A47D9E222219F9100FE58C0 /* BaseViewController.swift */,
 				0A54718122203115000567B9 /* NetworkeEngine.swift */,
+				0A14DA592241318F0036658D /* StorageManager.swift */,
 				0A547183222034FF000567B9 /* FanYi-Bridging-Header.h */,
 			);
 			path = config;
@@ -158,7 +187,9 @@
 				0A5471902221918D000567B9 /* AppDelegate.swift */,
 				0A54718522218C69000567B9 /* config */,
 				0A54718422218C3E000567B9 /* controllers */,
+				0A14DA6422427E260036658D /* ViewModel */,
 				0A47D9E42221A00200FE58C0 /* views */,
+				0A14DA5B22425A9B0036658D /* modles */,
 			);
 			path = FanYi;
 			sourceTree = "<group>";
@@ -384,11 +415,16 @@
 				0A47D9E122219E3700FE58C0 /* ProfileViewController.swift in Sources */,
 				0A5E918D222421E2002FAE4A /* Share.swift in Sources */,
 				0A47D9FC2223033200FE58C0 /* ShareViewController.swift in Sources */,
+				0A14DA6322425BA70036658D /* BubbleTableViewCell.swift in Sources */,
+				0A14DA5A2241318F0036658D /* StorageManager.swift in Sources */,
+				0A14DA68224280860036658D /* TranslationModel.swift in Sources */,
 				0A54718222203115000567B9 /* NetworkeEngine.swift in Sources */,
 				0A47D9E62221A04A00FE58C0 /* Menu.swift in Sources */,
 				0A14DA5822410EF90036658D /* Utils.swift in Sources */,
 				0A47D9EA2222DFD100FE58C0 /* SettingsViewController.swift in Sources */,
+				0A14DA6622427E9F0036658D /* TranslateViewModel.swift in Sources */,
 				0A54718F22219184000567B9 /* FanYi.xcdatamodeld in Sources */,
+				0A14DA6122425B790036658D /* BubbleView.swift in Sources */,
 				23526CE16E6DC3DD59E60F1A /* ViewController.swift in Sources */,
 				0A5471912221918D000567B9 /* AppDelegate.swift in Sources */,
 				0A47D9E322219F9100FE58C0 /* BaseViewController.swift in Sources */,

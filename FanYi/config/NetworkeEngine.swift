@@ -16,13 +16,13 @@ struct NetworkeEngine {
         case POST
     }
     
-    static func request(urlString: NSString,
+    static func request(urlString: String,
                         requestType: RequestType,
                         parameters: NSDictionary?,
                         progress: ((_ progress: Progress) -> Void)?,
                         success: @escaping (_ task: URLSessionDataTask, _ responseObject: Any?) -> Void,
                         failure: @escaping (_ task: URLSessionDataTask?, _ error: Error) -> Void) {
-        
+        let enUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let configuration = URLSessionConfiguration.default
         let httpsManager = AFHTTPSessionManager(sessionConfiguration: configuration)
 
@@ -36,7 +36,7 @@ struct NetworkeEngine {
         var dataTask: URLSessionDataTask?;
         switch requestType {
         case .GET:
-            dataTask = httpsManager.get(urlString as String,
+            dataTask = httpsManager.get(enUrlString ?? "",
                                         parameters: parameters,
                                         progress: progress,
                                         success: success,
@@ -76,7 +76,7 @@ struct NetworkeEngine {
         ///封装放到子线中去
         DispatchQueue.global(qos: .utility).async {
 
-            NetworkeEngine.request(urlString: URLString as NSString,
+            NetworkeEngine.request(urlString: URLString,
                     requestType: requestType,
                     parameters: parameters,
                     progress: nil,
