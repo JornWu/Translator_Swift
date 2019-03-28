@@ -12,33 +12,39 @@ import CommonCrypto
 final class TranslateViewModel: NSObject {
     
     public func translate(keyWord: String) /*-> TranslationModel*/ {
-        var param = createPublicParam_V3(action: .TextTranslate)
-        let sourceText = keyWord.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        var param = [String: Any]();
         
-        param["SourceText"] = sourceText
+        param["SourceText"] = keyWord
         param["Source"] = "zh"
         param["Target"] = "en"
         param["ProjectId"] = kPROJECT_ID
-        param["Content-Type"] = "application/json"
-        param["Host"] = "tmt.tencentcloudapi.com"
-        param["SignatureMethod"] = "HmacSHA256"
         
-        NetworkeEngine.loadNetworkeDate(URLString: kMAIN_URL, requestType: .POST, parameters: param as NSDictionary) { (result: NSDictionary) in
+//        let payload = "{\"SourceText\":\"\(keyWord)\",\"Source\":\"zh\",\"Target\":\"en\",\"ProjectId\":\(kPROJECT_ID)}"
+//        let pubParam = createPublicParam_V3(action: .TextTranslate, payload: payload)
+        let pubParam = createPublicParam_V1(action: .TextTranslate, baseParam: param)
+        
+        param.merge(pubParam) {$1}
+        
+        NetworkeEngine.loadNetworkeDate(URLString: kMAIN_URL,
+                                        requestType: .GET,
+                                        parameters: param as NSDictionary) {
+            (result: NSDictionary) in
             ///
             
             
         }
     }
     
-    private func createPublicParam_V1(action: ActionType) -> [String: Any] {
-        var publicParam = [String: Any]()
+    private func createPublicParam_V1(action: ActionType, baseParam: [String: Any]) -> [String: Any] {
+        var publicParam = (baseParam as NSDictionary).copy() as! [String: Any]
         
         publicParam["Action"] = action.rawValue
         publicParam["Version"] = kPUBLIC_VALUE_VERSION
         publicParam["Region"] = kPUBLIC_VALUE_REGION
         publicParam["SecretId"] = kPROJECT_SECRET_ID
-        publicParam["Nonce"] = 2019//arc4random_uniform(UInt32.max)
+        publicParam["Nonce"] = arc4random_uniform(UInt32.max)
         publicParam["Timestamp"] = NSInteger(Date().timeIntervalSince1970)
+        publicParam["Token"] = ""
         
         let sortedParam = publicParam.sorted { (arg0, arg1) -> Bool in
             let (key0, _) = arg0
@@ -47,17 +53,19 @@ final class TranslateViewModel: NSObject {
              return key0 < key1
         }
         
-        publicParam["Signature"] = urlEncode(HMAC_Sign(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA1),
-                                                       keyString: kPROJECT_SECRET_KEY,
-                                                       dataString: pairs2SignString(sortedParam)!))
+        let hash = HMAC_Sign(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA1),
+                             keyBytes: kPROJECT_SECRET_KEY.data(using: .utf8)! as NSData,
+                             dataString: pairs2SignString(sortedParam)!)
+            
+        publicParam["Signature"] = urlEncode(base64Encode(hash.bytes, count: hash.length))
 
         JWLog.d(publicParam)
 
         return publicParam
     }
     
-    private func createPublicParam_V3(action: ActionType) -> [String: Any] {
-        let timestamp = Date().timeIntervalSince1970
+    private func createPublicParam_V3(action: ActionType, payload: String) -> [String: Any] {
+        let timestamp = NSInteger(Date().timeIntervalSince1970)
         let algorithm = "TC3-HMAC-SHA256"
         
         let dateFormatter = DateFormatter()
@@ -68,12 +76,11 @@ final class TranslateViewModel: NSObject {
         /// 步骤 1：拼接规范请求串
         let httpRequestMethod = "POST"
         let canonicalUri = "/"
-        let canonicalQueryString = "Limit=10&Offset=0"
+        let canonicalQueryString = ""
         let canonicalHeaders = "content-type:\(kPUBLIC_VALUE_JSON)\n"
             + "host:" + kPUBLIC_VALUE_HOST + "\n"
         let signedHeaders = "content-type;host"
-        let payload = ""
-        let hashedRequestPayload = "\(payload.hash)"
+        let hashedRequestPayload = hexSHA256_sign(payload)
         let canonicalRequest = httpRequestMethod + "\n"
             + canonicalUri + "\n"
             + canonicalQueryString + "\n"
@@ -85,73 +92,83 @@ final class TranslateViewModel: NSObject {
         
         /// 步骤 2：拼接待签名字符串
         let credentialScope = utcDate + "/" + kPUBLIC_VALUE_SERVICE + "/" + "tc3_request"
-        let hashedCanonicalRequest = "\(canonicalRequest.hash)"
-        let stringToSign = algorithm + "\n" + "\(timestamp)" + "\n"
-            + credentialScope + "\n" + hashedCanonicalRequest
+        let hashedCanonicalRequest = hexSHA256_sign(canonicalRequest)
+        let stringToSign = algorithm + "\n"
+            + "\(timestamp)" + "\n"
+            + credentialScope + "\n"
+            + hashedCanonicalRequest
         
         JWLog.d("stringToSign: " + stringToSign)
         
         /// 步骤 3：计算签名
+        let date = ("TC3" + kPROJECT_SECRET_KEY).data(using: .utf8)! as NSData
         let secretDate = HMAC_Sign(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA256),
-                                   keyString: "TC3" + kPROJECT_SECRET_KEY,
+                                   keyBytes: date,
                                    dataString: utcDate)
         
         let secretService = HMAC_Sign(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA256),
-                                      keyString: secretDate,
+                                      keyBytes: secretDate,
                                       dataString: kPUBLIC_VALUE_SERVICE)
         
         let secretSigning = HMAC_Sign(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA256),
-                                      keyString: secretService,
+                                      keyBytes: secretService,
                                       dataString: "tc3_request")
         
-        let signature = HMAC_Sign(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA256),
-                                  keyString: secretSigning,
-                                  dataString: stringToSign);
+        let signature = hexEncode(HMAC_Sign(algorithm: CCHmacAlgorithm(kCCHmacAlgSHA256),
+                                            keyBytes: secretSigning,
+                                            dataString: stringToSign) as Data);
         
         JWLog.d("signature: " + signature);
         
         /// 步骤 4：拼接 Authorization
-        let authorization = algorithm + " " + "Credential=" + kPROJECT_SECRET_ID + "/"
-            + credentialScope + ", " + "SignedHeaders=" + signedHeaders + ", " + "Signature=" + signature;
+        let authorization = algorithm + " "
+            + "Credential=" + kPROJECT_SECRET_ID + "/"
+            + credentialScope + ", "
+            + "SignedHeaders=" + signedHeaders + ", "
+            + "Signature=" + signature;
         
         JWLog.d("authorization: " + authorization);
         
         return [kPUBLIC_REQUEST_PARAM_AUTHORIZATION: authorization,
                 kPUBLIC_REQUEST_PARAM_ACTION: action.rawValue,
                 kPUBLIC_REQUEST_PARAM_REGION: kPUBLIC_VALUE_REGION,
-                kPUBLIC_REQUEST_PARAM_TIMESTAMP: NSInteger(timestamp),
+                kPUBLIC_REQUEST_PARAM_TIMESTAMP: timestamp,
                 kPUBLIC_REQUEST_PARAM_VERSION: kPUBLIC_VALUE_VERSION]
     }
-
-    private func HMAC_Sign(algorithm: CCHmacAlgorithm, keyString: String, dataString: String) -> String {
-        if algorithm != kCCHmacAlgSHA1 && algorithm != kCCHmacAlgSHA256 {
-            JWLog.e("Unsupport algorithm.")
-            return ""
+    
+    private func hexSHA256_sign(_ dataString: String) -> String {
+        let data = dataString.data(using: .utf8)! as NSData
+        var cSHA256 = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        CC_SHA256(data.bytes, CC_LONG(data.count), &cSHA256)
+        
+        var hexString = ""
+        for byte in cSHA256 {
+            hexString += String(format: "%02x", byte)
         }
         
-        let cKeyString = keyString.cString(using: .utf8)
-        let cDataString = dataString.cString(using: .utf8)
+        return hexString
+    }
+
+    private func HMAC_Sign(algorithm: CCHmacAlgorithm,
+                           keyBytes: NSData,
+                           dataString: String) -> NSData {
+        if algorithm != kCCHmacAlgSHA1 && algorithm != kCCHmacAlgSHA256 {
+            JWLog.e("Unsupport algorithm.")
+            return NSData()
+        }
         
-        let len = algorithm == CCHmacAlgorithm(kCCHmacAlgSHA1) ? CC_SHA1_DIGEST_LENGTH : CC_SHA256_DIGEST_LENGTH
+        let data = dataString.data(using: .utf8)! as NSData
+        let len = algorithm == CCHmacAlgorithm(kCCHmacAlgSHA1) ?
+            CC_SHA1_DIGEST_LENGTH : CC_SHA256_DIGEST_LENGTH
         var cHMAC = [UInt8](repeating: 0, count: Int(len))
-        CCHmac(algorithm, cKeyString, keyString.count, cDataString, dataString.count, &cHMAC)
         
-        /// 结果十六进制数据Base64编码
-//        var hexString = ""
-//        for byte in cHMAC {
-//            hexString += String(format: "%02x", byte)
-//        }
-//
-//        let base64Data = Data(bytes: hexString.cString(using: .utf8)!, count: hexString.count)
+        CCHmac(algorithm, keyBytes.bytes, keyBytes.count,
+               data.bytes, data.count, &cHMAC)
         
-        /// 原结果二进制数据Base64编码
-        let base64Data = Data(bytesNoCopy: &cHMAC, count: Int(len), deallocator: Data.Deallocator.none)
-        let base64String = base64Data.base64EncodedString()
-        
-        return base64String
+        return NSData(bytes: &cHMAC, length: cHMAC.count)
     }
     
-    private func decTobin(number: Int) -> String {
+    private func dec2bin(_ number: Int) -> String {
         var num = number
         var str = ""
         while num > 0 {
@@ -175,8 +192,24 @@ final class TranslateViewModel: NSObject {
         return str
     }
     
+    private func base64Encode(_ bytes: UnsafeRawPointer, count: Int) -> String {
+        let base64Data = Data(bytes: bytes, count: count)
+        let base64String = base64Data.base64EncodedString()
+        return base64String
+    }
+    
+    private func hexEncode(_ data: Data) -> String {
+        var hexString = ""
+        for byte in data {
+            hexString += String(format: "%02x", byte)
+        }
+        
+        return hexString
+    }
+    
     private func urlEncode(_ string: String) -> String {
-        let newString = string.addingPercentEncoding(withAllowedCharacters: CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[]{} ").inverted)
+        let newString = string.addingPercentEncoding(withAllowedCharacters:
+            CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[]{} ").inverted)
         
         return newString ?? ""
     }

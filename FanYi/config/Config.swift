@@ -45,7 +45,7 @@ let kTARGET_LANGUAGE_LIST = ["English", "Japanese", "Korean",
 let kMAIN_URL = "https://tmt.tencentcloudapi.com"
 let kMAIN_REGION = "ap-guangzhou"
 
-let kPROJECT_ID = "1139572"
+let kPROJECT_ID = 1139572
 let kPROJECT_SECRET_ID = "AKIDMDpNZojX8HsYAhtVq0zmSzPeigT6ot68"
 let kPROJECT_SECRET_KEY = "GXhgU9qRsAPc2KQPEsOn1WwCHDzbFl6I"
 

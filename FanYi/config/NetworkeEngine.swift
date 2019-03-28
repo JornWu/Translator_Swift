@@ -42,7 +42,7 @@ struct NetworkeEngine {
                                         success: success,
                                         failure: failure)
         case .POST:
-            dataTask = httpsManager.post(urlString as String,
+            dataTask = httpsManager.post(enUrlString ?? "",
                                         parameters: parameters,
                                         progress: progress,
                                         success: success,
